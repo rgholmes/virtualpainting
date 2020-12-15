@@ -29,10 +29,10 @@ def cartoonize(rgb_image, *, num_pyr_downs=2, num_bilaterals=2):
     img_blur = cv2.GaussianBlur(img_gray, (15, 15), 0, 0)
 
     gray_edges = cv2.adaptiveThreshold(img_blur, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 2)
-   
+    #gray_edges = cv2.Canny(img_blur, 50, 100)
     rgb_edges = cv2.cvtColor(gray_edges, cv2.COLOR_GRAY2RGB)
-    #cv2.imshow('Image3', rgb_edges)
-    return cv2.bitwise_or(filtered_normal_img, rgb_edges)
+    cv2.imshow('Image3', gray_edges)
+    return cv2.bitwise_and(filtered_normal_img, rgb_edges)
 
 #gx = cv2.Scharr(img_gray, cv2.CV_32F, 1, 0, 1) 
 #gy = cv2.Scharr(img_gray, cv2.CV_32F, 0, 1, 1) 
