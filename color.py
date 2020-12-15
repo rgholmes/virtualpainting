@@ -33,6 +33,6 @@ def kmeans(image, k, attempts):
 
     return(res2)
 
-img_vib = vibrancy(img)
+#img_vib = vibrancy(img)
     
-cv2.imwrite('images/color_blue.jpg', img_vib)
+#cv2.imwrite('images/color_blue.jpg', img_vib)

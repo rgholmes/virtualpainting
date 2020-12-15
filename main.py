@@ -2,7 +2,9 @@ import numpy as np
 import cv2
 import random
 import color
+import vectormatrix
 from color import vibrancy
+from vectormatrix import creategrid, creategradient
 
 img = cv2.imread('images/starwars3.jpg')
 #img2 = img.reshape((-1, 3))
@@ -13,26 +15,6 @@ img_ref = vibrancy(img)
 img_canvas = np.zeros((img.shape[0], img.shape[1], 3), np.uint8)
 #create a blank canvas with BGR values
 img_canvas[:] = (31, 46, 100)
-
-def creategrid(hieght, width, circles):
-
-    grid = []
-
-    for i in range(circles):
-        x = random.randint(0, width - 1) 
-        y = random.randint(0, hieght - 1)
-        grid.append((x,y))
-
-    random.shuffle(grid)
-    return grid
-
-def creategradient(image):
-
-    img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    img_lap = cv2.Laplacian(img_gray, cv2.CV_16S, ksize=3)
-    img_lap = cv2.convertScaleAbs(img_lap)
-    img_blur = cv2.GaussianBlur(img_lap, (15, 15), 0, 0)
-    return(img_blur)
 
 def applybrush(image):
 
@@ -72,4 +54,4 @@ print(std)
 grid = creategrid(img.shape[0], img.shape[1], circles=90000)
 img_final = applybrush(img_canvas)
 
-cv2.imwrite('images/segmented.jpg', img_final)
+cv2.imwrite('images/output.jpg', img_grad)
