@@ -4,6 +4,22 @@ import random
 
 img = cv2.imread('images/starwars3.jpg')
 
+def createcanvas(image):
+    img_canvas = np.zeros((img.shape[0], img.shape[1], 3), np.uint8)
+    #create a blank canvas with BGR values
+    img_canvas[:] = (31, 46, 100)
+    return img_canvas
+
+def findcolor(image, color_pallete, r, g, b):
+
+    m1 = np.array([r],[g],[b])
+    m2 = np.array([,,],[[,,])
+
+
+
+
+
+    return(tuple(color))
 
 def vibrancy(image):
 
